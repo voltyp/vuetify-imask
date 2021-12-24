@@ -25,7 +25,7 @@ export default {
     },
   },
   data: () => ({
-    $el: null,
+    el: null,
     $elData: null,
     iMaskInstance: null,
   }),
@@ -39,9 +39,9 @@ export default {
       }
     },
     initMask() {
-      this.$el = this.$refs.input.$el.querySelector('input');
+      this.el = this.$refs.input.$el.querySelector('input');
       this.$elData = this.$refs.input._data;
-      this.iMaskInstance = IMask(this.$el, this.mask)
+      this.iMaskInstance = IMask(this.el, this.mask)
           .on('accept', this.onAccept.bind(this));
     },
     onAccept() {
@@ -94,7 +94,7 @@ export default {
           }
         } else {
           this.destroyMask();
-          if ('value' in props) this.$el.value = props.value;
+          if ('value' in props) this.el.value = props.value;
         }
       },
       deep: true
